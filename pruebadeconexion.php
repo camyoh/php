@@ -28,13 +28,13 @@
         mysqli_select_db($conexion, 'local');
         $nombre = $_POST['nombre'];
         $nombre = utf8_decode($nombre);
-        mysqli_query($conexion,"INSERT INTO nombre (nombre) VALUES ('$nombre')");
+        mysqli_query($conexion,"INSERT INTO usuarios (nombre) VALUES ('$nombre')");
         echo 'Datos insertados';
     }
     if (isset($_POST['Submit2'])) {
         $conexion = mysqli_connect('localhost', 'root', '');
         mysqli_select_db($conexion, 'local');
-        $consulta = "SELECT nombre FROM nombre";
+        $consulta = "SELECT nombre FROM usuarios";
         $datos = $conexion->query($consulta);
         while($fila=$datos->fetch_assoc()){
             echo utf8_decode($fila['nombre'])."<br>";
