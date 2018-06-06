@@ -5,5 +5,5 @@
 
   session_destroy();
 
-  header('Location: /login2');
+  header('Location: /php/Modificar, insertar, leer datos');
 ?>

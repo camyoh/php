@@ -38,7 +38,7 @@
     <?php
       $conexion = mysqli_connect('localhost', 'root', '');
       mysqli_select_db($conexion, 'test');
-      $consulta = "SELECT * FROM menu";
+      $consulta = "SELECT * FROM deldia";
       $datos = $conexion->query($consulta);
       echo 'Estos son los platos que en el momento están en la base de datos:<br>';
       while($fila=$datos->fetch_assoc()){
@@ -64,7 +64,7 @@
         $descripcionPlato = test_input($_POST["descripcionPlato"]);
         $precioPlato = test_input($_POST["precioPlato"]);
         mysqli_query($conexion,"INSERT INTO menu (nombre,descripcion,precio) VALUES ('$nombrePlato','$descripcionPlato','$precioPlato')");
-        header('Location: /login2');
+        header('Location: /php/Modificar, insertar, leer datos');
       }
     ?>
       <p>Formulario para modificar un plato del menú</p>
@@ -73,6 +73,7 @@
       Nombre: <input type="text" name="nombreModificar">
       Descripción: <input type="text" name="descripcionModificar">
       Precio: <input type="number" name="precioModificar">
+      Nombre de la imagen: <input type="text" name="nombreImagenModificar">
       <input type="submit" name="modificarPlato" value="Modificar Plato">
       </form>
     <?php
@@ -81,8 +82,9 @@
         $nombreModificar = test_input($_POST["nombreModificar"]);
         $descripcionModificar = test_input($_POST["descripcionModificar"]);
         $precioModificar = test_input($_POST["precioModificar"]);
-        mysqli_query($conexion,"UPDATE menu SET nombre='$nombreModificar',descripcion='$descripcionModificar',precio='$precioModificar' WHERE id=$idModificar");
-        header('Location: /login2');
+        $nombreImagenModificar = test_input($_POST["nombreImagenModificar"]);
+        mysqli_query($conexion,"UPDATE deldia SET nombre='$nombreModificar',descripcion='$descripcionModificar',precio='$precioModificar',nombreimagen='$nombreImagenModificar' WHERE id=$idModificar");
+        header('Location: /php/Modificar, insertar, leer datos');
       }
     ?>
 
@@ -90,7 +92,7 @@
       <h2>Esta sección es del administrador del restaurante</h2>
 
       <a href="login.php">Iniciar Sesión</a>
-      <a href="signup.php">SignUp</a>
+      <!-- <a href="signup.php">SignUp</a> -->
     <?php endif; ?>
   </body>
 </html>

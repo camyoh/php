@@ -3,7 +3,7 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-    header('Location: /login2');
+    header('Location: /php/Modificar, insertar, leer datos');
   }
   require 'database.php';
 
@@ -17,7 +17,7 @@
 
     if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
       $_SESSION['user_id'] = $results['id'];
-      header("Location: /login2");
+      header("Location: /php/Modificar, insertar, leer datos");
     } else {
       $message = 'Alguno de los datos no coincide. Por favor verifíquelos';
     }
