@@ -40,17 +40,17 @@
       mysqli_select_db($conexion, 'test');
       $consulta = "SELECT * FROM deldia";
       $datos = $conexion->query($consulta);
-      echo 'Estos son los platos que en el momento están en la base de datos:<br>';
+      echo '<h3>Estos son los platos del día:</h3><br>';
       while($fila=$datos->fetch_assoc()){
         echo 'ID del plato: '.$fila['id'].'<br>Nombre: '.$fila['nombre'].'<br>Descripción: '.$fila['descripcion'].'<br>Precio: '.$fila['precio'].'<br><br>';
       }
     ?>
-      <form action="" method="post">
+      <!-- <form action="" method="post">
       Nombre: <input type="text" name="nombrePlato">
       Descripción: <input type="text" name="descripcionPlato">
       Precio: <input type="number" name="precioPlato">
       <input type="submit" name="agregarPlato" value="Agregar Plato al menú">
-      </form>
+      </form> -->
       
     <?php
       function test_input($data) {
@@ -67,15 +67,27 @@
         header('Location: /php/Modificar, insertar, leer datos');
       }
     ?>
-      <p>Formulario para modificar un plato del menú</p>
+      <h3>Formulario para modificar un plato del menú</h3>
       <form action="" method="post">
-      Id: <input type="number" name="idModificar" required>
-      Nombre: <input type="text" name="nombreModificar">
-      Descripción: <input type="text" name="descripcionModificar">
-      Precio: <input type="number" name="precioModificar">
-      Nombre de la imagen: <input type="text" name="nombreImagenModificar">
+      Id: 
+      <select name="idModificar" id="" required>
+        <option value="" selected disabled hidden >Escoja el ID del plato</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <!-- <input type="number" name="idModificar" required> -->
+      Nombre: <input type="text" name="nombreModificar" required>
+      Descripción: <input type="text" name="descripcionModificar" required>
+      Precio: <input type="number" name="precioModificar" required>
+      Nombre de la imagen: <input type="text" name="nombreImagenModificar" required>
       <input type="submit" name="modificarPlato" value="Modificar Plato">
       </form>
+      <img src="" alt="">
     <?php
       if (isset($_POST['modificarPlato'])) {
         $idModificar = test_input($_POST["idModificar"]);
@@ -88,11 +100,12 @@
       }
     ?>
 
+
     <?php else: ?>
       <h2>Esta sección es del administrador del restaurante</h2>
-
       <a href="login.php">Iniciar Sesión</a>
       <!-- <a href="signup.php">SignUp</a> -->
+
     <?php endif; ?>
   </body>
 </html>
