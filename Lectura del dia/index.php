@@ -25,11 +25,15 @@
     .foto{
         width: 300px;
         height: 300px;
+        background: blue;
+    }
+    .foto img{
+        width: 100%;
     }
 </style>
 <body>
     <div class="caja">
-        <div class="foto">
+        <div class="foto" >
             <img src="<?php echo strip_tags($textoimagen) ?>" alt="">
         </div>
         <div class="dia">
